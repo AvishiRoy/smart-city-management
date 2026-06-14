@@ -8,21 +8,69 @@
 
     <h1>Smart City Traffic Management</h1>
 
-    <form>
-        <label>Hour:</label>
-        <input type="number">
+    <form onsubmit="predictTraffic(event)">
 
-        <br><br>
+    <label>Temperature:</label>
+    <input id="temp" type="number" required>
 
-        <label>Vehicle Count:</label>
-        <input type="number">
+    <br><br>
 
-        <br><br>
+    <label>Rain:</label>
+    <input id="rain" type="number" required>
 
-        <button type="submit">
-            Predict Traffic
-        </button>
-    </form>
+    <br><br>
+
+    <label>Snow:</label>
+    <input id="snow" type="number" required>
+
+    <br><br>
+
+    <label>Cloud Coverage:</label>
+    <input id="clouds" type="number" required>
+
+    <br><br>
+
+    <button type="submit">
+        Predict Traffic
+    </button>
+
+</form>
+
+<h2 id="result"></h2>
+    <script>
+async function predictTraffic(event) {
+
+    event.preventDefault();
+
+    const temp = document.getElementById("temp").value;
+    const rain = document.getElementById("rain").value;
+    const snow = document.getElementById("snow").value;
+    const clouds = document.getElementById("clouds").value;
+
+    const response = await fetch(
+        "http://127.0.0.1:5000/predict",
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                temp: temp,
+                rain: rain,
+                snow: snow,
+                clouds: clouds
+            })
+        }
+    );
+
+    const data = await response.json();
+
+    document.getElementById("result").innerHTML =
+        "Predicted Traffic Volume: " +
+        data.predicted_traffic +
+        " vehicles";
+}
+</script>
 
 </body>
 </html>
