@@ -6,7 +6,8 @@ An AI-powered Smart City Traffic Management System that predicts traffic congest
 
 ## Features
 
-* Traffic congestion prediction
+* Traffic Volume Prediction
+* Flask REST API
 * Flask backend API
 * Interactive dashboard
 * Data visualization
@@ -19,6 +20,7 @@ An AI-powered Smart City Traffic Management System that predicts traffic congest
 * Scikit-Learn
 * HTML
 * CSS
+* JavaScript
 * GitHub
 
 ## Team Members
@@ -41,4 +43,10 @@ Backend server implemented using Flask.
 Frontend dashboard under development.
 
 Machine Learning model in progress.
+
+## Dataset
+Metro Interstate Traffic Volume Dataset
+
+## Result
+Predicted Traffic Volume based on weather conditions.
 
